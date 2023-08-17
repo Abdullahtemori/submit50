@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #f2f2f2;
+            padding: 10px;
+            text-align: right;
+        }
+
+        .search-container {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .advanced-search-container {
+            text-align: left;
+            margin-top: 50px;
+            margin-left: 20px;
+        }
+
+        .search-bar {
+            border-radius: 20px;
+            padding: 10px;
+            width: 50%;
+            border: 1px solid #ccc;
+        }
+
+        .search-button, .advanced-search-button {
+            margin-top: 10px;
+            background-color: #4285f4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .search-button:hover, .advanced-search-button:hover {
+            background-color: #3367d6;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4285f4;
+            margin-left: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="javascript:void(0);" onclick="showPage('search')">Google Search</a>
+        <a href="javascript:void(0);" onclick="showPage('image_search')">Image Search</a>
+        <a href="javascript:void(0);" onclick="showPage('advanced_search')">Advanced Search</a>
+    </div>
+    <div id="search_page" class="search-container">
+        <form action="https://www.google.com/search" method="get">
+            <input type="text" name="q" class="search-bar" />
+            <input type="submit" value="Google Search" class="search-button" />
+            <a href="https://www.google.com/search?q=&btnI=I">I'm Feeling Lucky</a>
+        </form>
+    </div>
+    <div id="image_search_page" class="search-container" style="display: none;">
+        <form action="https://www.google.com/images" method="get">
+            <input type="text" name="q" class="search-bar" />
+            <input type="submit" value="Search Images" class="search-button" />
+        </form>
+    </div>
+    <div id="advanced_search_page" class="advanced-search-container" style="display: none;">
+        <form action="https://www.google.com/search" method="get">
+            <label for="all-words">Find pages with...</label>
+            <input type="text" name="as_q" id="all-words" /><br />
+            <label for="exact-phrase">Find pages with this exact word or phrase:</label>
+            <input type="text" name="as_epq" id="exact-phrase" /><br />
+            <label for="any-words">Find pages with any of these words:</label>
+            <input type="text" name="as_oq" id="any-words" /><br />
+            <label for="none-words">Find pages with none of these words:</label>
+            <input type="text" name="as_eq" id="none-words" /><br />
+            <input type="submit" value="Advanced Search" class="advanced-search-button" />
+        </form>
+    </div>
+    <script>
+        function showPage(pageId) {
+            var pages = ['search_page', 'image_search_page', 'advanced_search_page'];
+            for (var i = 0; i < pages.length; i++) {
+                var page = document.getElementById(pages[i]);
+                page.style.display = (pages[i] === pageId) ? 'block' : 'none';
+            }
+        }
+    </script>
+</body>
+</html>
